@@ -1,0 +1,2 @@
+# Enscan_Script
+快速筛选Enscan输出结果中的domain，让你在红蓝攻防中快人一步
