@@ -61,3 +61,5 @@ python3 enscan_script.py -h
 1、提取公众号名和小程序名。
 
 2、提取结果联动扫描器一条龙服务。
+
+3、联合hunter查询，导出url和ip，可直接放入dddd和fscan快速梭哈。
