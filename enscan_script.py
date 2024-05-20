@@ -79,12 +79,12 @@ def enscan_domain():
         else:
             other.append(i)
 
-    result_file = open(args.output_dir + "/result.txt", "a+")
-    ip_file = open(args.output_dir + "/ip.txt", "a+")
-    domain_file = open(args.output_dir + "/domain.txt", "a+")
-    icp_file = open(args.output_dir + "/icp.txt", "a+")
-    wechat_file = open(args.output_dir + "/wechat.txt", "a+")
-    app_file = open(args.output_dir + "/app.txt", "a+")
+    result_file = open(args.output_dir + "/result.txt", "a+", encoding='utf-8')
+    ip_file = open(args.output_dir + "/ip.txt", "a+", encoding='utf-8')
+    domain_file = open(args.output_dir + "/domain.txt", "a+", encoding='utf-8')
+    icp_file = open(args.output_dir + "/icp.txt", "a+", encoding='utf-8')
+    wechat_file = open(args.output_dir + "/wechat.txt", "a+", encoding='utf-8')
+    app_file = open(args.output_dir + "/app.txt", "a+", encoding='utf-8')
 
     result_file.write(time.asctime() + "\n")
     result_file.write("找到的ip资产如下：\n")
@@ -150,7 +150,7 @@ def enscan_domain():
         for i in is_null:
             result_file.write(i + "\n")
             print(i)
-    check = open(args.output_dir + "/check.txt", "a+")
+    check = open(args.output_dir + "/check.txt", "a+", encoding='utf-8')
     check.write(time.asctime() + "\n")
     if len(l) == 0:
         check.write("检查一下你他喵的是不是没放资产！\n")
@@ -172,7 +172,7 @@ def enscan_domain():
 
 def enscan_run():
     run_null = []
-    err_file = open(args.output_dir + "/err.txt", "a+")
+    err_file = open(args.output_dir + "/err.txt", "a+", encoding='utf-8')
     err_file.write(time.asctime() + "\n")
     err_file.write("查询失败目标资产名单：\n")
     with open('targets.txt', 'r', encoding='utf-8') as f:
@@ -183,7 +183,7 @@ def enscan_run():
             current_line += 1
             print("正在运行enscan，当前正在导出：" + line.replace("\n","") + "，目前进度：" + "{:.2%}".format(current_line / all_line))
             line = line.replace('\n', '')
-            output = subprocess.run('./enscan -n ' + line + ' -o ' + args.running_dir + ' -json', shell=True, capture_output=True, text=True)
+            output = subprocess.run('./enscan -n ' + line + ' -o ' + args.running_dir + ' -json', shell=True, capture_output=True, text=True, encoding='utf-8')
             if "无法解析信息错误信息" in output.stdout:
                 print("网络错误，已将" + line + "添加到err.txt文件中，请手动打开爱企查检查情况。")
                 err_file.write(line + "\n")
@@ -203,7 +203,7 @@ def hunter_scan():
     number = 1
     print("正在使用hunter提取domain，请稍等")
     hunter_write_to_xls()
-    api_key = ""
+    api_key = "289d0affd492d7d37edfa29f7a5a93c52192a365ef99eba95d7f261851d20632"
     with open("./" + args.output_dir + "/domain.txt", 'r', encoding='utf-8') as domain_read:
         for line in domain_read.readlines():
             line = line.replace('\n', '')
@@ -211,8 +211,7 @@ def hunter_scan():
             query_sentence = 'domain.suffix="' + line + '"'
             search = base64.urlsafe_b64encode(query_sentence.encode("utf-8"))
             search = str(search, 'utf8')
-            url = 'https://hunter.qianxin.com/openApi/search?api-key=' + str(api_key) + '&search=' + str(
-                search) + '&page=1&page_size=10&is_web=3'
+            url = 'https://hunter.qianxin.com/openApi/search?api-key=' + str(api_key) + '&search=' + str(search) + '&page=1&page_size=10&is_web=3'
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36',
             }
@@ -257,8 +256,8 @@ def hunter_write_to_xls():
 def hunter_scan_and_write(number):
     global l
     l =0
-    ip_file = open(args.output_dir + "/ip.txt", "a+")
-    url_file = open(args.output_dir + "/url.txt", "a+")
+    ip_file = open(args.output_dir + "/ip.txt", "a+", encoding='utf-8')
+    url_file = open(args.output_dir + "/url.txt", "a+", encoding='utf-8')
     for l in range(len(res["data"]["arr"])):
         its_url = res["data"]["arr"][l]["url"]  # 网址
         url_file.write(its_url + "\n")
@@ -286,22 +285,22 @@ def hunter_scan_and_write(number):
 def remove_duplicates():
     ip_file_list = []
     url_file_list = []
-    ip_file = open(args.output_dir + "/ip.txt", "r")
+    ip_file = open(args.output_dir + "/ip.txt", "r", encoding='utf-8')
     for i in ip_file:
         if i in ip_file_list:
             continue
         else:
             ip_file_list.append(i)
-    ip_file = open(args.output_dir + "/ip.txt", "w")
+    ip_file = open(args.output_dir + "/ip.txt", "w", encoding='utf-8')
     for i in ip_file_list:
         ip_file.write(i)
-    url_file = open(args.output_dir + "/url.txt", "r")
+    url_file = open(args.output_dir + "/url.txt", "r", encoding='utf-8')
     for i in url_file:
         if i in url_file_list:
             continue
         else:
             url_file_list.append(i)
-    url_file = open(args.output_dir + "/url.txt", "w")
+    url_file = open(args.output_dir + "/url.txt", "w", encoding='utf-8')
     for i in url_file_list:
         url_file.write(i)
 
