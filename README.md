@@ -82,6 +82,9 @@ ip地址
 
 ![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516064119071.png)
 
+hunter输出结果示例
+
+
 ## 更新日志
 
 2024.04.14 创建项目Enscan_Script。
