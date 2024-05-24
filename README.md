@@ -4,7 +4,7 @@
 
 
 
-直接Enscan导出大批量资产失败率太高了，所以干脆写个脚本，实测跑1500+个资产没问题，本来打算加了个hunter的功能，用来导出url和ip用的，但是很不辛，功能在5月10日写好，hunter就公告5月10日到5月26日维护，日你妈退钱。功能大概测了一下，调用hunter api会因为网络问题会查不到或者是出现报错，这点要等hunter维护完了再去进行修改。
+直接Enscan导出大批量资产失败率太高了，所以干脆写个脚本，实测跑1500+个资产没问题，这次是加了个hunter的功能，用来查找domain.txt中的资产，导出信息为url.txt和ip.txt，用于直接工具梭哈，这里推荐工具为dddd。hunter导出功能可能会耗费大量积分，各位师傅们酌情使用。
 
 脚本主要实现功能是和Enscan功能重复的，所以这个脚本的使用看个人喜好，有问题和建议可以提Issues，共同完善这个懒狗脚本。
 
@@ -18,9 +18,13 @@
 
 [wgpsec/ENScan_GO: 一款基于各大企业信息API的工具，解决在遇到的各种针对国内企业信息收集难题。一键收集控股公司ICP备案、APP、小程序、微信公众号等信息聚合导出。 (github.com)](https://github.com/wgpsec/ENScan_GO)
 
+红队工具dddd下载，详细配置请移步dddd项目
+
+[SleepingBag945/dddd: dddd是一款使用简单的批量信息收集,供应链漏洞探测工具，旨在优化红队工作流，减少伤肝的机械性操作。支持从Hunter、Fofa批量拉取目标 (github.com)](https://github.com/SleepingBag945/dddd)
+
 ## 如何使用
 
-hunter功能点使用存在点小问题，等hunter维护完就进行修改完善，这里暂不演示。
+hunter功能点懒得截图了，师傅们自己测试吧！
 
 帮助信息
 
@@ -88,6 +92,8 @@ ip地址
 
 2024.05.16 更新项目Enscan_Script，修复一系列乱七八糟的bug，将提取内容优化，新增提取公众号和App。
 
+2024.05.24 更新项目Enscan_Script，联合hunter查询，导出url和ip，可直接放入dddd和fscan快速梭哈。
+
 ## 待更新内容
 
-1、联合hunter查询，导出url和ip，可直接放入dddd和fscan快速梭哈。
+暂无，有想法欢迎联系
