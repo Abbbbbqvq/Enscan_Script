@@ -200,10 +200,11 @@ make_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
 
 def hunter_scan():
     global res
+    is_null = ["hunter提取为空或是失败的资产："]
     number = 1
     print("正在使用hunter提取domain，请稍等")
     hunter_write_to_xls()
-    api_key = "289d0affd492d7d37edfa29f7a5a93c52192a365ef99eba95d7f261851d20632"
+    api_key = ""
     with open("./" + args.output_dir + "/domain.txt", 'r', encoding='utf-8') as domain_read:
         for line in domain_read.readlines():
             line = line.replace('\n', '')
@@ -211,15 +212,38 @@ def hunter_scan():
             query_sentence = 'domain.suffix="' + line + '"'
             search = base64.urlsafe_b64encode(query_sentence.encode("utf-8"))
             search = str(search, 'utf8')
-            url = 'https://hunter.qianxin.com/openApi/search?api-key=' + str(api_key) + '&search=' + str(search) + '&page=1&page_size=10&is_web=3'
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36',
-            }
-            resp = requests.get(url=url, headers=headers)
-            res = json.loads((resp.content).decode('utf-8'))
-            if res["data"]["arr"] != None:
-                number = hunter_scan_and_write(number)
-            sleep(2)
+            is_page = 1
+            while True:
+                url = 'https://hunter.qianxin.com/openApi/search?api-key=' + str(api_key) + '&search=' + str(search) + '&page=' + str(is_page) + '&page_size=100&is_web=3'
+                headers = {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36',
+                }
+                print("正在提取：" + line + "，当前正在导出第" + str(is_page) + "页")
+                try:
+                    resp = requests.get(url=url, headers=headers)
+                    res = json.loads((resp.content).decode('utf-8'))
+                    if res["code"] != 200:
+                        if res["code"] == 429:
+                            continue
+                        is_null.append(line)
+                        print("错误信息：", end = "")
+                        print(res)
+                    elif res["data"]["arr"] == None and res["code"] != 400:
+                        if is_page == 1:
+                            is_null.append(line)
+                        else:
+                            break
+                    elif res["data"]["arr"] != None and res["code"] != 400:
+                        number = hunter_scan_and_write(number)
+                except:
+                    is_null.append(line)
+                    print("错误信息：", end="")
+                    print(res)
+                sleep(3)
+                is_page += 1
+    err_file = open(args.output_dir + "/err.txt", "a+", encoding='utf-8')
+    for i in is_null:
+        err_file.write(i + "\n")
     print("提取完毕，正在" + args.output_dir + "目录下生成xls，提取到的ip已经筛选好放入ip.txt")
     workbook.save(args.output_dir + '/hunter.xls')
 
@@ -321,8 +345,8 @@ if __name__ == '__main__':
             os.makedirs(args.output_dir)
         enscan_run()
         enscan_domain()
-        #hunter_scan()
-        #remove_duplicates()
+        hunter_scan()
+        remove_duplicates()
     elif args.running_mode == "2":
         if os.path.isdir(args.output_dir):
             print(args.output_dir + "文件夹已存在，不再继续创建")
