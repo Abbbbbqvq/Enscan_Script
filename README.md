@@ -84,6 +84,15 @@ ip地址
 
 hunter输出结果示例
 
+![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/1.png)
+
+![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/2.png)
+
+![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/3.png)
+
+![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/4.png)
+
+![image-20240516064119071](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/5.png)
 
 ## 更新日志
 
