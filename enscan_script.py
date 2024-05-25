@@ -211,7 +211,7 @@ def hunter_scan():
     number = 1
     print("正在使用hunter提取domain，请稍等")
     hunter_write_to_xls()
-    api_key = "8272f00e7fb62ce092f3422f8c482cce45a29096734c77fbed0e132af5d78502"
+    api_key = ""
     with open("./" + args.output_dir + "/domain.txt", 'r', encoding='utf-8') as domain_read:
         for line in domain_read.readlines():
             line = line.replace('\n', '')
