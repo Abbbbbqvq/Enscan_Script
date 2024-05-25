@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import argparse
 from time import sleep
 import time
@@ -170,20 +172,25 @@ def enscan_domain():
     print("结果都将导出在" + args.output_dir + "里哦，请注意查收！")
 
 
-def enscan_run():
+def enscan_run(deep=' '):
     run_null = []
     err_file = open(args.output_dir + "/err.txt", "a+", encoding='utf-8')
     err_file.write(time.asctime() + "\n")
     err_file.write("查询失败目标资产名单：\n")
+    if deep != ' ':
+        deep = '-invest 100 -deep ' + deep
     with open('targets.txt', 'r', encoding='utf-8') as f:
         current_line = 0
         all_line = len(f.readlines())
         f.seek(0)
         for line in f:
             current_line += 1
-            print("正在运行enscan，当前正在导出：" + line.replace("\n","") + "，目前进度：" + "{:.2%}".format(current_line / all_line))
+            print("正在运行enscan，当前正在导出：" + line.replace("\n", "") + "，目前进度：" + "{:.2%}".format(current_line / all_line))
             line = line.replace('\n', '')
-            output = subprocess.run('./enscan -n ' + line + ' -o ' + args.running_dir + ' -json', shell=True, capture_output=True, text=True, encoding='utf-8')
+            print(line)
+            commond = './enscan -n ' + line + ' -json ' + deep
+            print(commond)
+            output = subprocess.run(commond, shell=True, capture_output=True, text=True, encoding='utf-8')
             if "无法解析信息错误信息" in output.stdout:
                 print("网络错误，已将" + line + "添加到err.txt文件中，请手动打开爱企查检查情况。")
                 err_file.write(line + "\n")
@@ -204,12 +211,12 @@ def hunter_scan():
     number = 1
     print("正在使用hunter提取domain，请稍等")
     hunter_write_to_xls()
-    api_key = ""
+    api_key = "8272f00e7fb62ce092f3422f8c482cce45a29096734c77fbed0e132af5d78502"
     with open("./" + args.output_dir + "/domain.txt", 'r', encoding='utf-8') as domain_read:
         for line in domain_read.readlines():
             line = line.replace('\n', '')
             print("正在提取：" + line)
-            query_sentence = 'domain.suffix="' + line + '"'
+            query_sentence = 'domain.suffix="' + line + '" + and ip.country=="中国"'
             search = base64.urlsafe_b64encode(query_sentence.encode("utf-8"))
             search = str(search, 'utf8')
             is_page = 1
@@ -330,9 +337,18 @@ def remove_duplicates():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument("-m", "--mode", dest='running_mode', help="运行模式：\n例如：python3 main.py -m 1\n1、运行完enscan然后使用hunter提取出资产域名信息。\n2、只运行enscan。\n3、只提取资产域名信息。\n4、只运行hunter(默认提取result/domain.txt，不是默认目录需要-o指定目录)")
-    parser.add_argument("-d", "--dir", dest='running_dir', help="指定enscan输出目录\n例如：python3 main.py -d outs(不加-d参数默认提取outs目录下的导出结果)")
-    parser.add_argument("-o", "--output", dest='output_dir', help="保存结果到xxx文件夹\n例如：python3 main.py -o result(不加-o参数默认保存在result文件夹下)")
+    parser.add_argument("-m", "--mode", dest='running_mode',
+                        help="运行模式：\n例如：python3 main.py -m 1\n1、运行完enscan然后使用hunter提取出资产域名信息。\n"
+                             "2、只运行enscan。\n"
+                             "3、只提取资产域名信息。\n"
+                             "4、只运行hunter(默认提取result/domain.txt，不是默认目录需要-o指定目录)")
+    parser.add_argument("-d", "--dir", dest='running_dir',
+                        help="指定enscan输出目录\n例如：python3 main.py -d outs(不加-d参数默认提取outs目录下的导出结果)")
+    parser.add_argument("-o", "--output", dest='output_dir',
+                        help="保存结果到xxx文件夹\n例如：python3 main.py -o result(不加-o参数默认保存在result文件夹下)")
+    parser.add_argument("-sub", "--subsidiary", dest='subsidiary', default=' ',
+                        help="搞子公司\n例如：python3 main.py -m 2 -sub 3 (百分百控股往下摸三级子公司)")
+
     args = parser.parse_args()
     if args.running_dir == None:
         args.running_dir = "outs"
@@ -343,7 +359,7 @@ if __name__ == '__main__':
             print(args.output_dir + "文件夹已存在，不再继续创建")
         else:
             os.makedirs(args.output_dir)
-        enscan_run()
+        enscan_run(args.subsidiary)
         enscan_domain()
         hunter_scan()
         remove_duplicates()
@@ -352,7 +368,7 @@ if __name__ == '__main__':
             print(args.output_dir + "文件夹已存在，不再继续创建")
         else:
             os.makedirs(args.output_dir)
-        enscan_run()
+        enscan_run(args.subsidiary)
     elif args.running_mode == "3":
         if os.path.isdir(args.output_dir):
             print(args.output_dir + "文件夹已存在，不再继续创建")
