@@ -1,97 +1,10 @@
-Thu May 16 06:10:38 2024
-资产分类：
-小米科技有限责任公司--2024-05-16--1715829022：
-    mi.com
-    i3ciebwk6ixfb.com
-    58.220.58.152
-    xiaomicorp.cn
-    mi-img2.com
-    peijian.com
-    mi-customer.com
-    816798.net
-    micode.cn
-    mi-static.com
-    mi-img5.com
-    xiaomi.org
-    mios.cn
-    xiaomicorp.net
-    408399.com
-    leijun.com
-    xiaomiinc.com.cn
-    mi-img.com
-    xiaomiinc.com
-    xiaomi.net
-    miredian.com
-    mi-cdn.com
-    milliant.com
-    xlaomi.net
-    xiaomi.cn
-    xiaomiinc.net
-    miren.cn
-    xiaomidns.cn
-    mi-cache.com
-    xiaomidns.com
-    micode.net
-    mi-idc.com
-    mioffice.cn
-    micode.com.cn
-    mi-img1.com
-    xiaomiinc.cn
-    xiaomidns.net
-    xiaomi.com
-    mi-img3.com
-    xiaomicorp.com.cn
-    mios.com.cn
-    mikge.com
-    xiaomicorp.com
-    408399.net
-    mi-img4.com
-    xiaomidns.com.cn
-    mixinshe.com
-    mitalk.com
-    miliao.com
-    xiaomiwear.com
-    mijia.tech
-    mieco.net
-    xiaoaiscan.net
-    mitvos.com
-    mitvos.net
-    xiaominr.com
-    小米科技有限责任公司.中国
-    duokanbox.com
-    miwifi.com
-    mifile.cn
-    xiaomimobile.com
-    kewucool.com
-    xiaomiprint.com
-    58.220.59.2
-    xiaoaisound.com
-    mi.中国
-    miui.cn
-    mi.cn
-    58.220.58.153
-    xiaomixiaoai.com
-    xiaoaiassist.com
-    mgslb.com
-    mij.cc
-    aleenote.com
-    miui.com
-    mi0.cc
-    hongmi.cn
-    micoce.com.cn
-    m3-cloud.com
-    mgslb.cn
-    aleenote.cn
-    mgslb.net
-    xiaomisa.net
-    mgslb.org
-    xiaomisa.com
-    alibiji.cn
-    heihei.com
-    xiaomisa.cn
-    alinotes.cn
-    xiaomisa.org
-    miyun.com
+Wed May 28 10:09:43 2025
+检查是否存在输入有误的资产：
+小米
+
+
+Wed May 28 10:09:43 2025
+aqc查询资产分类：
     MIUI
     小米手环
     小米商城
@@ -143,130 +56,13 @@ Thu May 16 06:10:38 2024
     京ICP备10046444号-108
     京ICP备10046444号-107
     京ICP备10046444号-2
-小米科技有限责任公司--2024-05-16--1715828188：
-    mi.com
-    i3ciebwk6ixfb.com
-    58.220.58.152
-    xiaomicorp.cn
-    mi-img2.com
-    peijian.com
-    mi-customer.com
-    816798.net
-    micode.cn
-    mi-static.com
-    mi-img5.com
-    xiaomi.org
-    mios.cn
-    xiaomicorp.net
-    408399.com
-    leijun.com
-    xiaomiinc.com.cn
-    mi-img.com
-    xiaomiinc.com
-    xiaomi.net
-    miredian.com
-    mi-cdn.com
-    milliant.com
-    xlaomi.net
-    xiaomi.cn
-    xiaomiinc.net
-    miren.cn
-    xiaomidns.cn
-    mi-cache.com
-    xiaomidns.com
-    micode.net
-    mi-idc.com
-    mioffice.cn
-    micode.com.cn
-    mi-img1.com
-    xiaomiinc.cn
-    xiaomidns.net
-    xiaomi.com
-    mi-img3.com
-    xiaomicorp.com.cn
-    mios.com.cn
-    mikge.com
-    xiaomicorp.com
-    408399.net
-    mi-img4.com
-    xiaomidns.com.cn
-    mixinshe.com
-    mitalk.com
-    miliao.com
-    xiaomiwear.com
-    mijia.tech
-    mieco.net
-    xiaoaiscan.net
-    mitvos.com
-    mitvos.net
-    xiaominr.com
-    小米科技有限责任公司.中国
-    duokanbox.com
-    miwifi.com
-    mifile.cn
-    xiaomimobile.com
-    kewucool.com
-    xiaomiprint.com
-    58.220.59.2
-    xiaoaisound.com
-    mi.中国
-    miui.cn
-    mi.cn
-    58.220.58.153
-    xiaomixiaoai.com
-    xiaoaiassist.com
-    mgslb.com
-    mij.cc
-    aleenote.com
-    miui.com
-    mi0.cc
-    hongmi.cn
-    micoce.com.cn
-    m3-cloud.com
-    mgslb.cn
-    aleenote.cn
-    mgslb.net
-    xiaomisa.net
-    mgslb.org
-    xiaomisa.com
-    alibiji.cn
-    heihei.com
-    xiaomisa.cn
-    alinotes.cn
-    xiaomisa.org
-    miyun.com
-    MIUI
-    小米手环
-    小米商城
-    小米移动
-    小米围观
-    小米围观
-    小米电视
-    小米客服那些事
-    红米手机
-    小米食堂
-    米聊
-    GO主题-酒红迷恋
-    小米视频电话
-    小米便签
-    可爱猫咪盒子V3
-    超萌史努比
-    小米商城
-    小爱音箱
-    小米移动
-    喵星人时钟
-    小米金融
-    幸运万年历
-    米家
-    Skyvi
-北京百度网讯科技有限公司--2024-05-16--1715829033：
+北京百度网讯科技有限公司-2025-05-28--1748397718：
     bceapp.com
     baiduhui.com
     kanduoduo.com.cn
+    wenxiaoyan.com
     baiducloudapi.com
-    duapp-preview.com
     bduapp.com
-    bdbae.com
     baiduapp.com
     pubbcsapp.com
     yunjiasucdn.info
@@ -289,7 +85,6 @@ Thu May 16 06:10:38 2024
     baidu-cdn.net
     baiduyuncdn.com
     bdycdn.net
-    baidu-cdn.com
     bce-cdn.cn
     jomodns.cn
     bce-cdn.com
@@ -297,17 +92,13 @@ Thu May 16 06:10:38 2024
     baiduyuncdn.net
     jomodns.net
     baidu-cdn.cn
-    bdycdn.cn
-    jomocdn.net
     bakshifen.com
     aipage.com
     baiduux.com
     yeyingkf.com
-    bceappbuilder.com
     apkscan17.cn
     openrasp.com
     xiaoduzaijia.cn
-    bceimg.com
     bceimg.cn
     bdysites.com
     bcehosts.com
@@ -334,7 +125,6 @@ Thu May 16 06:10:38 2024
     aistudio-app.com
     openrasp.com.cn
     baiduwebgame.com
-    duapp.com
     dwz.cn
     bceidaas.com
     baidu-int.com
@@ -361,7 +151,6 @@ Thu May 16 06:10:38 2024
     yunjiasu-cdn-dnssec.net
     hongmeiti.com.cn
     hongmeiti.com
-    hongmeiti.cn
     hongmeiti.net
     bdsec.top
     openrasp.net
@@ -372,7 +161,6 @@ Thu May 16 06:10:38 2024
     网址之家.网络.cn
     hao123.net
     网址之家.公司.cn
-    好123.cn
     好123.网络.cn
     网址之家.cn
     网址之家.中国
@@ -392,8 +180,6 @@ Thu May 16 06:10:38 2024
     bdtjrcv.com
     faxingbao.com
     openrasp.org
-    dnsproxy.cn
-    fhldns.net
     911dns.com.cn
     dusdn.cn
     911dns.cn
@@ -415,7 +201,6 @@ Thu May 16 06:10:38 2024
     webgamehome.com
     micro-game-client.com
     wssanguo.com
-    sanguows.com
     bfe-networks.net
     chuanke.com
     bddns.cn
@@ -442,19 +227,15 @@ Thu May 16 06:10:38 2024
     bcebos.com
     baidubce.cn
     baiduyunwaf.com
-    baidubce.com
     baidubce.net.cn
     baidubos.com
     baiduwaf.com
-    baidubce.net
-    baidubce.com.cn
     hiapk.com
     yunjiasucdn.net
     openrasp.info
     baidu-bank.com
     baihangdai.cn
     baihangdai.com
-    baihangbao.cn
     baiduxiaodai.cn
     baidu-bank.cn
     baiduxiaodai.com
@@ -482,14 +263,11 @@ Thu May 16 06:10:38 2024
     baiduyundns.com
     bdydns.net
     bcedns.cn
-    duxuetang.cn
     duxuetang.com
     paddlepaddle.org.cn
     37swan.com
     17swan.com
-    swan366.com
     baidupcs.com
-    baidupcs.cn
     baidupcs.com.cn
     baidupcs.net
     baeapps.com
@@ -502,7 +280,6 @@ Thu May 16 06:10:38 2024
     百度公司.公司.cn
     百度网站.cn
     duurl.cn
-    百度公司.网络.cn
     百度网站.中国
     百度公司.网络
     百度网站.公司.cn
@@ -532,14 +309,10 @@ Thu May 16 06:10:38 2024
     clouda.com
     cloudajs.org
     百度网盘
-    魔法之歌:末日前传
-    USA NeWs 4 All Free
-    百度相册
-    袋鼠输入
-    大侠传
     京ICP证030173号-58
     京ICP证030173号-31
     京ICP证030173号-115
+    京ICP证030173号-467
     京ICP证030173号-117
     京ICP证030173号-54
     京ICP证030173号-6
@@ -563,7 +336,6 @@ Thu May 16 06:10:38 2024
     京ICP证030173号-104
     京ICP证030173号-3
     京ICP证030173号-90
-    京ICP证030173号-412
     京ICP证030173号-176
     京ICP证030173号-77
     京ICP证030173号-155
@@ -712,5 +484,12 @@ Thu May 16 06:10:38 2024
     京ICP证030173号-93
     京ICP证030173号-178
     京ICP证030173号-42
+    百度网盘
+    魔法之歌:末日前传
+    USA NeWs 4 All Free
+    百度相册
+    袋鼠输入
+    大侠传
+    京ICP证030173号-412
 
 

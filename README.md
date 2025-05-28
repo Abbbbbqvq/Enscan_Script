@@ -1,30 +1,32 @@
 # Enscan_Script
 
-快速筛选Enscan输出结果中的domain，让你在红蓝攻防中快人一步
-
-
-
-直接Enscan导出大批量资产失败率太高了，所以干脆写个脚本，实测跑1500+个资产没问题，这次是加了个hunter的功能，用来查找domain.txt中的资产，导出信息为url.txt和ip.txt，用于直接工具梭哈，这里推荐工具为dddd。hunter和fofa导出功能可能会耗费大量积分，各位师傅们酌情使用，特别是fofa查询，不仅消耗点数，而且每天还有查询次数限制。
-
-脚本主要实现功能是和Enscan功能重复的，所以这个脚本的使用看个人喜好，有问题和建议可以提Issues，共同完善这个懒狗脚本。
+适用于大批量资产导出，快速筛选Enscan输出结果中的domain和ip，利用hunter快速批量导出资产，让你在红蓝攻防中快人一步。
 
 ## 声明
 
-使用程序可能导致账号被封，仅用于信息收集用途，请勿用于非法用途
+不建议给脚本加上并发，可能会导致账号被封，该项目仅用于合法信息查询，请勿用于非法用途
 
-## 环境配置
+## 为什么使用该项目
 
-首先下载enscan到本地，生成配置文件，配置好需要的api，详细的配置请移步enscan_go项目
+直接使用Enscan常常会有的一个痛点，还没导出几条资产就触发安全验证
 
-[wgpsec/ENScan_GO: 一款基于各大企业信息API的工具，解决在遇到的各种针对国内企业信息收集难题。一键收集控股公司ICP备案、APP、小程序、微信公众号等信息聚合导出。 (github.com)](https://github.com/wgpsec/ENScan_GO)
+![image-20250528093329169](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528093329169.png)
 
-红队工具dddd下载，详细配置请移步dddd项目
+aqc安全验证现在变得鸡贼了，使用Enscan触发安全验证，你手动打开aqc去解验证的时候发现一切正常，但是使用Enscan仍然存在安全验证
 
-[SleepingBag945/dddd: dddd是一款使用简单的批量信息收集,供应链漏洞探测工具，旨在优化红队工作流，减少伤肝的机械性操作。支持从Hunter、Fofa批量拉取目标 (github.com)](https://github.com/SleepingBag945/dddd)
+![image-20250528093659295](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528093659295.png)
+
+曾经也设想过，多开几个账号，共同去导出目标，但是也存在同样问题，跑不了多少个目标就触发安全验证了，即使加上sleep延迟也还是可能会触发安全验证。用代理池去并发跑，一下子就容易封掉账号，所以还是直接用热点开关飞行模式切换ip会比较好。或者直接舍弃并发，每20秒切换一次代理池应该也可以(不确定这样会不会封号)。个人目前使用热点切换ip的方式，暂时还没有被封号。
+
+![image-20250528092706084](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528092706084.png)
+
+
 
 ## 如何使用
 
-hunter功能点懒得截图了，师傅们自己测试吧！
+下载enscan放到当前目录下，重命名为“enscan”，windows用户命名为“enscan.exe”。下载好后根据enscan项目，配置好config.yaml文件
+
+![image-20250528094910615](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528094910615.png)
 
 帮助信息
 
@@ -32,27 +34,33 @@ hunter功能点懒得截图了，师傅们自己测试吧！
 python3 enscan_script.py -h
 ```
 
-![image-20240516055358937](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516055358937.png)
+![image-20250528095212683](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528095212683.png)
 
-运行enscan然后提取资产域名信息
+targets.txt填入导出目标单位
 
 ```
 python3 enscan_script.py -m 1
 ```
 
-若是不加“-o”参数默认导出在result文件夹下
+![image-20250528100231052](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528100231052.png)
 
-![image-20240516061056580](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516061056580.png)
+出现如下提示，按照提示开关飞行模式切换ip
 
-如果超过10秒没反应，可能是触发了爱企查的安全验证
+![image-20250528095649225](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528095649225.png)
 
-![image-20240516060638729](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516060638729.png)
+待Enscan查询完毕后，使用如下命令整合导出资产
 
-出现如下情况，打开爱企查通过安全验证即可，出现网络错误报错，解决方法也一样
+```
+python3 enscan_script.py -m 2
+```
 
-![image-20240516060748013](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516060748013.png)
+![image-20250528101005251](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528101005251.png)
 
-![image-20240516060830333](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20240516060830333.png)
+如果查询目标命令和查询结果不符，则不导出对应资产，重新确认修改资产名字后重新运行enscan
+
+![image-20250528100435480](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528100435480.png)
+
+![image-20250528101041533](https://github.com/Abbbbbqvq/Enscan_Script/blob/main/images/image-20250528101041533.png)
 
 分别导出多个结果txt，方便利用扫描器一键梭哈
 
@@ -109,6 +117,8 @@ hunter输出结果示例
 2024.05.25 更新项目Enscan_Script，增加100%控股子公司输出。
 
 2024.07.22 更新项目Enscan_Script，增加fofa查询功能。
+
+2025.05.28 更新项目Enscan_Script，修复存在的多个问题
 
 ## 待更新内容
 
