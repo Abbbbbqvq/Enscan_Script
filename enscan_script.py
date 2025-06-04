@@ -558,19 +558,23 @@ if __name__ == '__main__':
     args = parser.parse_args()
     try:
         if args.running_mode == "1":
-            if args.subsidiary == "" and args.city != "":
-                print("[red bold][ERROR] -sub参数未设置，请检查！--help")
-                exit()
-            check_folder("result")
-            run1 = threading.Thread(target=enscan_run, args=(args.subsidiary,))
-            run2 = threading.Thread(target=check_baidu_security_verification)
+            if os.path.isfile("enscan") or os.path.isfile("enscan.exe"):
+                if args.subsidiary == "" and args.city != "":
+                    print("[red bold][ERROR] -sub参数未设置，请检查！--help")
+                    exit()
+                check_folder("result")
+                run1 = threading.Thread(target=enscan_run, args=(args.subsidiary,))
+                run2 = threading.Thread(target=check_baidu_security_verification)
 
-            run1.start()
-            run2.start()
+                run1.start()
+                run2.start()
 
-            run1.join()
-            run2.join()
-            check_city(args.city)
+                run1.join()
+                run2.join()
+                check_city(args.city)
+            else:
+                print("[red bold][ERROR] 未发现当前目录下存在enscan可执行文件，请将enscan下载到当前目录，并重命名为enscan")
+                print("[red bold][ERROR] 下载链接：https://github.com/wgpsec/ENScan_GO/releases")
         elif args.running_mode == "2":
             check_folder("result")
             enscan_domain()
