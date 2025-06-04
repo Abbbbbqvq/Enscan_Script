@@ -11,12 +11,71 @@ import argparse
 import threading
 import subprocess
 from rich import print
+from rich.text import Text
+from rich.console import Console
 from rich.progress import Progress
 
 localtime = time.localtime(time.time())
 make_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
 
 make_check_stop = threading.Event()
+
+def gradient_text(text, start_color, end_color):
+    """
+    创建渐变颜色文本
+
+    :param text: 要渲染的文本
+    :param start_color: 起始颜色 (十六进制, 如 "#FF0000")
+    :param end_color: 结束颜色 (十六进制, 如 "#0000FF")
+    :return: 渐变效果的Text对象
+    """
+
+    # 将十六进制颜色转换为RGB元组
+    def hex_to_rgb(hex_color):
+        hex_color = hex_color.lstrip('#')
+        return tuple(int(hex_color[i:i + 2], 16) for i in (0, 2, 4))
+
+    start_rgb = hex_to_rgb(start_color)
+    end_rgb = hex_to_rgb(end_color)
+
+    # 创建Text对象
+    gradient = Text()
+
+    # 为每个字符计算插值颜色
+    for i, char in enumerate(text):
+        # 计算当前字符位置的比例 (0.0 - 1.0)
+        ratio = i / max((len(text) - 1), 1)  # 避免除以零
+
+        # 计算插值RGB值
+        r = int(start_rgb[0] + (end_rgb[0] - start_rgb[0]) * ratio)
+        g = int(start_rgb[1] + (end_rgb[1] - start_rgb[1]) * ratio)
+        b = int(start_rgb[2] + (end_rgb[2] - start_rgb[2]) * ratio)
+
+        # 创建RGB颜色字符串
+        color = f"rgb({r},{g},{b})"
+
+        # 添加带颜色的字符
+        gradient.append(char, style=color)
+
+    return gradient
+
+def banner():
+    ascii_art = """
+     ______                              _____           _       _
+    |  ____|                            / ____|         (_)     | |
+    | |__   _ __  ___  ___ __ _ _ __   | (___   ___ _ __ _ _ __ | |_
+    |  __| | '_ \\/ __|/ __/ _` | '_ \\   \\___ \\ / __| '__| | '_ \\| __|
+    | |____| | | \\__ \\ (_| (_| | | | |  ____) | (__| |  | | |_) | |_
+    |______|_| |_|___/\\___\\__,_|_| |_| |_____/ \\___|_|  |_| .__/ \\__|
+                                   ______                 | |
+                                  |______|                |_|
+    Version: Enscan_Script v1.3
+    Author: Abbbbbqvq
+    Github: https://github.com/Abbbbbqvq
+    """
+    console = Console()
+    text = gradient_text(ascii_art, "#00FF00", "#800080")
+    console.print(text)
 
 def remove_duplicates():
     ip_file_list = []
@@ -483,6 +542,7 @@ def check_folder(folder):
         os.makedirs(f"{folder}")
 
 if __name__ == '__main__':
+    banner()
     parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("-m", "--mode", dest='running_mode',
                         help="运行模式：\n例如：python3 main.py -m 1\n"
