@@ -485,7 +485,7 @@ def enscan_run(deep):
             for line in f:
                 line = line.replace('\n', '')
                 if os.name == "nt":
-                    commond = './enscan.exe -n "' + line + '" -json ' + deep
+                    commond = 'enscan.exe -n "' + line + '" -json ' + deep
                 elif os.name == "posix":
                     commond = './enscan -n "' + line + '" -json ' + deep
                 # print(commond)
