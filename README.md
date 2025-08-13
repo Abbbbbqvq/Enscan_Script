@@ -6,6 +6,11 @@
 
 不建议给脚本加上并发，可能会导致账号被封，该项目仅用于合法信息查询，请勿用于非法用途
 
+## 环境
+python: 3.10.10 (python3 不限)
+enscan: v1.2.2 (下载地址：https://github.com/wgpsec/ENScan_GO/releases/download/v1.2.2/enscan-v1.2.2-windows-amd64.zip)
+第一次使用请运行enscan -v 生成配置文件
+
 ## 为什么使用该项目
 
 直接使用Enscan常常会有的一个痛点，还没导出几条资产就触发安全验证
